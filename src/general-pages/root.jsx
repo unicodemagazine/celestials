@@ -220,7 +220,7 @@ export default function Root() {
 
           {/* Combined Concatenated Output Box */}
           <div className="combined-box-section">
-            <label className="celestial-label combined-label">What do you know of sins?</label>
+            <label className="celestial-label combined-label">Do you hear my voice?</label>
             <textarea
               ref={combinedRef}
               readOnly
