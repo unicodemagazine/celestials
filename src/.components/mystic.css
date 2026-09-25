@@ -1,0 +1,441 @@
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&family=Viaoda+Libre&display=swap");
+
+/* Component Box Sizing Reset */
+.mystic-card,
+.mystic-card * {
+    box-sizing: border-box;
+}
+
+/* Optional Layout Wrapper (Replaces global body styles) */
+.mystic-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+    background: var(--mystic-bg, hsl(270, 20%, 8%));
+    background: radial-gradient(
+        circle at 100% 0%,
+        var(--mystic-bg-gradient, hsl(280, 25%, 12%)),
+        var(--mystic-bg, hsl(270, 20%, 8%))
+    );
+}
+
+/* Main Scoped Card Component */
+.mystic-card {
+    /* Scoped Color System Defaults */
+    --mystic-bg: hsl(270, 20%, 8%);
+    --mystic-bg-gradient: hsl(280, 25%, 12%);
+    --mystic-border: hsl(40, 65%, 80%);
+    --mystic-text: hsl(40, 70%, 85%);
+    --mystic-button-hover: hsl(280, 25%, 12%);
+
+    display: flex;
+    flex-direction: column;
+    background: var(--mystic-bg);
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid var(--mystic-border);
+    position: relative;
+    padding: 1rem;
+    color: var(--mystic-text);
+
+    h1 {
+        font-family: "Viaoda Libre", serif;
+        text-align: center;
+        color: var(--mystic-text);
+        margin-top: 0;
+    }
+
+    p {
+        font-family: "Poiret One", sans-serif;
+        line-height: 1.5;
+        opacity: 0.8;
+        margin-bottom: 4rem;
+        color: var(--mystic-text);
+    }
+
+    /* Scoped Corner Ornaments */
+    .corner {
+        width: 0.5rem;
+        height: 0.5rem;
+        border: 1px solid var(--mystic-border);
+        position: absolute;
+
+        &::after,
+        &::before {
+            content: "";
+            position: absolute;
+        }
+
+        &::after {
+            width: 2rem;
+            height: calc(1rem - 1px);
+        }
+
+        &::before {
+            width: calc(1rem - 1px);
+            height: 2rem;
+        }
+
+        &.left {
+            left: -0.5rem;
+
+            &::after {
+                left: calc(-2px + 1rem);
+                border-left: 1px solid var(--mystic-border);
+            }
+
+            &::before {
+                left: -1px;
+                border-left: 1px solid var(--mystic-border);
+            }
+        }
+
+        &.right {
+            right: -0.5rem;
+
+            &::after {
+                right: calc(-2px + 1rem);
+                border-right: 1px solid var(--mystic-border);
+            }
+
+            &::before {
+                right: -1px;
+                border-right: 1px solid var(--mystic-border);
+            }
+        }
+
+        &.top {
+            top: -0.5rem;
+
+            &::after {
+                top: -1px;
+                border-top: 1px solid var(--mystic-border);
+            }
+
+            &::before {
+                top: calc(-2px + 1rem);
+                border-top: 1px solid var(--mystic-border);
+            }
+        }
+
+        &.bottom {
+            bottom: -0.5rem;
+
+            &::after {
+                bottom: -1px;
+                border-bottom: 1px solid var(--mystic-border);
+            }
+
+            &::before {
+                bottom: calc(-2px + 1rem);
+                border-bottom: 1px solid var(--mystic-border);
+            }
+        }
+    }
+
+    /* Scoped Mystic Button */
+    .mystic-button {
+        display: flex;
+        all: unset;
+        font-family: "Viaoda Libre", serif;
+        text-align: center;
+        color: var(--mystic-text);
+        border-top: 1px solid var(--mystic-border);
+        border-bottom: 1px solid var(--mystic-border);
+        height: 2rem;
+        padding: 0 1rem;
+        position: relative;
+        transition: background 200ms ease-in-out;
+        margin: 0 2rem;
+        cursor: pointer;
+
+        .left,
+        .right {
+            position: absolute;
+            width: 1.45rem;
+            height: 1.45rem;
+            border-bottom: 1px solid var(--mystic-border);
+            border-left: 1px solid var(--mystic-border);
+            transition: background 200ms ease-in-out;
+
+            &::before {
+                content: "";
+                width: 0.75rem;
+                height: 0.75rem;
+                border: 1px solid var(--mystic-border);
+                position: absolute;
+                top: calc(1rem - 1px);
+                left: calc(-0.4rem - 1px);
+            }
+
+            &::after {
+                content: "";
+                width: 0.5rem;
+                height: 0.5rem;
+                background: var(--mystic-border);
+                position: absolute;
+                top: calc(1rem - 1px);
+                left: calc(-0rem - 1px);
+            }
+        }
+
+        .left {
+            left: -0.75rem;
+            transform: rotate(45deg);
+        }
+
+        .right {
+            right: -0.75rem;
+            transform: rotate(-135deg);
+        }
+
+        &:hover {
+            background: var(--mystic-button-hover);
+
+            .left,
+            .right {
+                background: var(--mystic-button-hover);
+            }
+        }
+    }
+
+	.card-letter {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--mystic-bg);
+        color: var(--mystic-border);
+        font-family: "Viaoda Libre", serif;
+        font-size: 1.8rem;
+        line-height: 1;
+        padding: 0 0.3rem;
+        user-select: none;
+        z-index: 2;
+    }
+
+	/* Playing Card Corner Crest Letters */
+    .card-corner-letter {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.8rem;
+        height: 1.8rem;
+        color: var(--mystic-border);
+        background: var(--mystic-bg);
+        border: 1px solid var(--mystic-border);
+        border-radius: 50%; /* Circular crest badge */
+        outline: 1px solid var(--mystic-border);
+        outline-offset: -3px; /* Art Deco inner double-ring */
+        font-family: "Viaoda Libre", serif;
+        font-size: 0.9rem;
+        line-height: 1;
+        user-select: none;
+        z-index: 2;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+
+        &.top-left {
+            top: 0.5rem;
+            left: 0.5rem;
+        }
+
+        &.bottom-right {
+            bottom: 0.5rem;
+            right: 0.5rem;
+            transform: rotate(180deg);
+        }
+    }
+}
+
+/* ==========================================
+   Mystic Table & Morse Code Styling
+   ========================================== */
+
+.mystic-card h3 {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  color: var(--mystic-text, #e0e7ff);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 2rem 0 1rem 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--mystic-border, #00f3ff);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+.mystic-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  background: var(--mystic-bg, rgba(11, 15, 25, 0.6));
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.mystic-card th {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: var(--mystic-border, #00f3ff);
+  background: rgba(0, 243, 255, 0.08);
+  border-bottom: 2px solid var(--mystic-border, #00f3ff);
+}
+
+.mystic-card td {
+  padding: 0.6rem 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mystic-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.mystic-card tbody tr:hover {
+  background: rgba(0, 243, 255, 0.06);
+}
+
+.mystic-card tbody tr:hover td {
+  color: #ffffff;
+}
+
+/* Morse Code Highlighting */
+.mystic-card code {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  width: fit-content;
+  align-self: anchor-center;
+  justify-content: center;
+  letter-spacing: 4px;
+  color: var(--mystic-text, #00f3ff);
+  background: rgba(0, 243, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--mystic-border, rgba(0, 243, 255, 0.25));
+  text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+}
+
+.mystic-card.crimson {
+    --mystic-bg: hsl(0, 30%, 8%);
+    --mystic-border: hsl(0, 70%, 60%);
+    --mystic-text: hsl(0, 80%, 90%);
+}
+
+/* --- 10 CELESTIAL THEMES FOR MYSTIC CARDS --- */
+
+/* 1. SUN (Sol) — Radiant Solar Gold & Flare Amber */
+.mystic-card.theme-sun {
+  --mystic-bg: hsl(20, 45%, 6%);
+  --mystic-bg-gradient: hsl(30, 60%, 12%);
+  --mystic-border: hsl(45, 90%, 60%);
+  --mystic-text: hsl(45, 90%, 85%);
+  --mystic-button-hover: hsl(25, 70%, 18%);
+}
+
+/* 2. MOON (Luna) — Silver Mist & Pale Indigo */
+.mystic-card.theme-luna {
+  --mystic-bg: hsl(230, 30%, 8%);
+  --mystic-bg-gradient: hsl(225, 35%, 15%);
+  --mystic-border: hsl(210, 40%, 80%);
+  --mystic-text: hsl(210, 50%, 90%);
+  --mystic-button-hover: hsl(230, 30%, 18%);
+}
+
+/* 3. MERCURY — Quicksilver & Fleet Violet */
+.mystic-card.theme-mercury {
+  --mystic-bg: hsl(270, 5%, 7%);
+  --mystic-bg-gradient: hsl(262, 95%, 50%);
+  --mystic-border: hsl(189, 18%, 78%);
+  --mystic-text: hsl(260, 60%, 88%);
+  --mystic-button-hover: hsl(261, 89%, 4%);
+}
+
+/* 4. VENUS — Rose Gold & Velvet Crimson */
+.mystic-card.theme-venus {
+  --mystic-bg: hsl(340, 35%, 8%);
+  --mystic-bg-gradient: hsl(345, 40%, 14%);
+  --mystic-border: hsl(15, 65%, 75%);
+  --mystic-text: hsl(345, 70%, 88%);
+  --mystic-button-hover: hsl(340, 40%, 18%);
+}
+
+/* 5. MARS — Rusty Iron & Fiery Crimson */
+.mystic-card.theme-mars {
+  --mystic-bg: hsl(0, 40%, 7%);
+  --mystic-bg-gradient: hsl(10, 45%, 12%);
+  --mystic-border: hsl(15, 80%, 60%);
+  --mystic-text: hsl(20, 80%, 85%);
+  --mystic-button-hover: hsl(0, 50%, 16%);
+}
+
+/* 6. JUPITER — Imperial Violet & Champagne Gold */
+.mystic-card.theme-jupiter {
+  --mystic-bg: hsl(0, 0%, 0%);
+  --mystic-bg-gradient: hsl(335, 84%, 53%);
+  --mystic-border: hsl(15, 65%, 75%);
+  --mystic-text: hsl(345, 70%, 88%);
+  --mystic-button-hover: hsl(340, 40%, 18%);
+}
+
+/* 7. SATURN — Ochre & Obsidian Slate */
+.mystic-card.theme-saturn {
+  --mystic-bg: hsl(30, 15%, 8%);
+  --mystic-bg-gradient: hsl(210, 20%, 12%);
+  --mystic-border: hsl(38, 50%, 60%);
+  --mystic-text: hsl(40, 40%, 82%);
+  --mystic-button-hover: hsl(30, 20%, 16%);
+}
+
+/* 8. URANUS — Electric Cyan & Frozen Teal */
+.mystic-card.theme-uranus {
+  --mystic-bg: hsl(255, 44%, 7%);
+  --mystic-bg-gradient: hsl(180, 50%, 12%);
+  --mystic-border: hsl(234, 68%, 77%);
+  --mystic-text: hsl(249, 90%, 88%);
+  --mystic-button-hover: hsl(258, 51%, 16%);
+}
+
+/* 9. NEPTUNE — Deep Oceanic Blue & Aquamarine */
+.mystic-card.theme-neptune {
+  --mystic-bg: hsl(220, 50%, 7%);
+  --mystic-bg-gradient: hsl(210, 55%, 13%);
+  --mystic-border: hsl(175, 30%, 69%);
+  --mystic-text: hsl(190, 80%, 88%);
+  --mystic-button-hover: hsl(215, 45%, 17%);
+}
+
+/* 10. PLUTO — Spectral Orchid & Void Black */
+.mystic-card.theme-pluto {
+  --mystic-bg: hsl(290, 20%, 6%);
+  --mystic-bg-gradient: hsl(320, 30%, 11%);
+  --mystic-border: hsl(310, 60%, 70%);
+  --mystic-text: hsl(300, 50%, 88%);
+  --mystic-button-hover: hsl(300, 30%, 16%);
+}
+
+.mystic-card.theme-root {
+  --mystic-bg: hsla(231, 32%, 8%, 0.159);
+  --mystic-bg-gradient: hsl(225, 35%, 15%);
+  --mystic-border: hsl(210, 100%, 78%);
+  --mystic-text: hsl(210, 50%, 90%);
+  --mystic-button-hover: hsl(230, 30%, 18%);
+}
+
+.mystic-card.theme-terra {
+  --mystic-bg: hsl(138, 32%, 8%);
+  --mystic-bg-gradient: hsl(216, 33%, 29%);
+  --mystic-border: hsl(135, 96%, 51%);
+  --mystic-text: hsl(121, 100%, 91%);
+  --mystic-button-hover: hsl(230, 30%, 18%);
+}
