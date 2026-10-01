@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import Root from './general-pages/root'
 import Encrypt from './general-pages/encrypt'
 import Clock from './general-pages/clock'
+import Reward from './general-pages/reward'
 
 import Earth from './celestial-pages/earth'
 import Moon from './celestial-pages/moon'
@@ -22,7 +23,7 @@ import Pluto from './celestial-pages/pluto'
 import Leviathan from './demonic-pages/leviathan'
 import Satan from './demonic-pages/satan'
 import Mammon from './demonic-pages/mammon'
-import Asmosdeus from './demonic-pages/asmosdeus'
+import Asmodeus from './demonic-pages/asmodeus'
 import Lucifer from './demonic-pages/lucifer'
 import Adam from './demonic-pages/adam'
 import Beelzebub from './demonic-pages/beelzebub'
@@ -80,13 +81,15 @@ else {
           <Route path="/leviathan" element={<Leviathan />} />
           <Route path="/satan" element={<Satan />} />
           <Route path="/mammon" element={<Mammon />} />
-          <Route path="/asmosdeus" element={<Asmosdeus />} />
+          <Route path="/asmodeus" element={<Asmodeus />} />
           <Route path="/lucifer" element={<Lucifer />} />
           <Route path="/adam" element={<Adam />} />
           <Route path="/beelzebub" element={<Beelzebub />} />
           <Route path="/belphegor" element={<Belphegor />} />
           <Route path="/lilith" element={<Lilith />} />
           <Route path="/god" element={<God />} />
+
+          <Route path="/reward" element={<Reward />} />
 
           <Route path="/*" element={<Navigate to="/" replace />}/>
         </Routes>
